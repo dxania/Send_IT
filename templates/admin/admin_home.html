@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SendIT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link class="fa fa-paper-plane-o" rel="icon"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/admin_home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../../scripts/admin_home.js"></script>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <span>SEND It<i class="fa fa-paper-plane-o"></i></span>
+        </div>
+        <div class="topnav">
+            <a href="../../index.html">LogOut <i class="fa fa-power-off"></i></a>
+            <a href="#"><i class="fa fa-gear"></i> Settings</a>
+            <a href="#" class="active"><i class="fa fa-fw fa-edit"></i> Parcels</a>
+        </div>
+    </header>
+    <section>
+        <div class="top">
+            <div class="search">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Parcel Delivery Orders"><button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <button id="new" onclick="new_parcel()" disabled><i class="fa fa-plus"></i> New Parcel Delivery Order</button>
+        </div>
+        <br><br>
+        <table>
+            <tr>
+                <th>Parcel ID</th>
+                <th>Status</th>
+                <th>Present Location</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Delivered</td>
+                <td>Seeta</td>
+
+                <td>
+                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i></button>
+                    <!-- <button id="edit" onclick="edit()"><i class="fa fa-fw fa-edit"></i></button> -->
+                    <!-- <button id="cancel" onclick="ban()"><i class="fa fa-fw fa-ban"></i></button> -->
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><span id="parcelStatus">In-transit</span> 
+                    <select id="editStatusInput">
+                        <option value="delivered">Delivered</option>
+                        <option value="pending">In-transit</option>
+                    </select>
+                    <button id="editStatusButton" onclick="edit();">Change</button>
+                    <button id="saveStatusChangeButton" onclick="save();">Save Changes</button>
+                    <button id="cancelEditButton" onclick="cancelEdit();">Cancel</button>
+                </td>
+                <td><span id="presentLocation">Jinja</span> 
+                    <input type="text" id="location">
+                    <button id="editLocationButton" onclick="editLocation();">Change</button>
+                    <button id="saveLocationChangeButton" onclick="saveNewLocation();">Save Changes</button>
+                    <button id="cancelLocationEditButton" onclick="cancelLocationEdit();">Cancel</button>
+                </td>
+                <td>
+                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i></button>
+                    <!-- <button id="edit" onclick="edit()"><i class="fa fa-fw fa-edit"></i></button> -->
+                    <!-- <button id="cancel" onclick="ban()"><i class="fa fa-fw fa-ban"></i></button> -->
+                </td>
+            </tr>
+        </table>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <p>Date: 2018-10-11 10:00:00</p>
+                    <p>Parcel ID.: 1</p>
+                    <p>Number of items: 2</p>
+                    <p>Status: Delivered</p>
+                    <p>PICK UP LOCATION: Namugongo</p>
+                    <p>DESTINATION: Zirobwe</p>
+                </div>
+                    <div class="modal-body">
+                        <table id="modalTable">
+                            <tr>
+                                <th>ITEM</th>   
+                                <th>WEIGHT(kg)</th>
+                                <th>UNIT PRICE</th>
+                                <th>AMOUNT</th>
+                            </tr>
+                            <tr>
+                                <td>Super glue</td>
+                                <td>30</td>
+                                <td>1,000</td>
+                                <td>30,000</td>
+                            </tr>
+                            <tr>
+                                <td>Socks</td>
+                                <td>10</td>
+                                <td>5,800</td>
+                                <td>58,000</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                    <span>Created by: Daizy Obura</span>
+                    <div id="right">Total Weight(kg): 40 <br>
+                        Total Amount: 118,000 
+                    </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="parcelModal" class="parcelModal">
+                    <div class="parcelModal-content">
+                        <!-- <div class=parcelModal-header">
+                            <span class="close">&times;</span>
+                        </div> -->
+                        <div class="parcelModal-body">
+                            <form>
+                                <fieldset>
+                                    <legend>New Parcel</legend>
+                                    Pickup location:<br> <input type="text"  placeholder="Namugongo"><br><br>
+                                    Destination:<br> <input type="text" placeholder="Zirobwe"><br><br>
+                                    Number of items:<br> <input type="number" placeholder="58"><br><br>
+                                    <fieldset>
+                                        <legend>Items</legend>
+                                        <table>
+                                            <tr>
+                                                <th>Item name</th>
+                                                <th>Weight</th>
+                                                <th>Unit price</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" placeholder="Shoes" ></td>
+                                                <td><input type="number" placeholder="88"></td>
+                                                <td><input type="number" placeholder="900"></td>
+                                                <td><input type="number" placeholder="79000"></td>
+                                            </tr>
+                                            <tr><td colspan="4"><button>+ Add item</button></td></tr>
+                                        </table>
+                                    </fieldset><br>
+                                    Total weight:<br> <input type="number" placeholder="40"><br><br>
+                                    Total amount:<br> <input type="number" placeholder="118,000"><br><br>
+                                    <div id="right">
+                                        <button>Save Changes</button>  <button>Cancel</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div> 
+                </div>
+
+
+            <div id="editModal" class="editModal">
+                <div class="editModal-content">
+                    <div class="editModal-body">
+                        <form>
+                            <fieldset>
+                                <legend>Parcel 1</legend>
+                                Pickup location:<br> <input type="text" disabled value="Namugongo"><br><br>
+                                Destination:<br> <input type="text" value="Zirobwe"><br><br>
+                                Number of items:<br> <input type="text" disabled value="58"><br><br>
+                                Total weight:<br> <input type="text" disabled value="40"><br><br>
+                                Total amount:<br> <input type="text" disabled value="118,000"><br><br>
+                                <div id="right">
+                                    <button>Save Changes</button>  <button id="cancel" onclick="hideModal()">Cancel</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="cancelModal" class="cancelModal">
+                <div class="cancelModal-content">                 
+                    <p>Are you sure you want to cancel this order?</p>
+                    <button>Yes</button><button>No</button>
+                </div> 
+            </div>
+    </section>
+    <footer></footer>
+    
+</body>
+</html>
