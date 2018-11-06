@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
+html{
+    background: url(../images/userBg.jpg) center fixed;
+    /* filter: blur(2px); */
+    background-size: cover;
+}
+
+header{
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    background-color: rgb(48, 39, 39, 0.6);
+    height: 50px;
+}
+
+.brand{
+    float: left;
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+    margin-left: 30px;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.topnav a {
+    /* float: left; */
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px 12px;
+    text-decoration: none;
+    font-size: 13px;
+    float: right;
+    height: inherit;
+}
+
+.topnav a:hover {
+    font-weight: bolder;
+}
+
+.active {
+    background-color: rgb(32, 2, 2);
+    /* color: black; */
+}
+
+section{
+    width: 100%;
+    padding-top: 90px;
+}
+
+#new{
+    margin-right: 20%; 
+    border:none; 
+    color:aliceblue; 
+    float:right;
+    background-color: rgb(32, 2, 2); 
+    cursor: pointer; 
+    padding:7px 8px; 
+    border-radius: 10px;
+}
+
+.search input[type=text] {
+    margin-left: 20%;
+    padding: 5px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 20%;
+    background: #f1f1f1;
+  }
+
+.search button {
+    float: left;
+    width: 5%;
+    padding: 5px;
+    background: rgb(32, 2, 2);
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+  }
+
+table{
+    width: 70%;
+    margin: auto;
+    border: 1px solid #ddd; 
+    /* border-radius: 10px; */
+    /* background-color: #f1f1f1; */
+    background-color: rgba(48, 39, 39, 0.8);
+    font-family: 'Shadows Into Light', cursive;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+table th{
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;    
+}
+
+table td{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    
+}
+
+table td button{
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+table td i{
+    color: rgb(178, 169, 209);
+}
+
+footer{
+    bottom: 0;
+    left: 0;
+    /* z-index: 1; */
+    position: fixed;
+    width: 100%;
+    background-color: rgb(48, 39, 39, 0.6);
+    height: 30px;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: white;
+    color: black;
+    margin-left: 10%;
+    font-size: 12px;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modal-footer {
+    margin-left: 10%;
+    padding: 22px 16px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+}
+
+.modal-footer #right{
+    float: right;
+    margin-right: 15%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalTable {
+    width: 80%; 
+    border: 1px solid #ddd; 
+    font-size: 18px; 
+    /* background-color: #f1f1f1; */
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+}
+
+#modalTable td{
+    font-size: 14px;
+    font-weight: 100;
+}
+
+#modalTable th, #modalTable td {
+    padding: 8px; 
+}
+
+#modalTable tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#modalTable th{
+    background-color: rgb(210, 214, 214);
+    color: #000;
+    font-size: 14px;
+}
+
+#modalTable tr:hover{
+    cursor: pointer;
+    background-color: rgb(210, 214, 214);
+} 
+
+#modalTable tr td a{
+    text-decoration: none;
+}
+
+.parcelModal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+.parcelModal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.parcelModal-header {
+    padding: 2px 16px;
+    background-color: white;
+    color: black;
+    margin-left: 10%;
+    font-size: 12px;
+}
+
+.parcelModal-body {
+    padding: 2px 16px;
+    text-align: center;
+}
+
+.parcelModal-body form{
+    font-size: 12px;
+}
+
+.parcelModal-body form input{
+    border: none;
+    border-bottom: ridge;
+}
+
+.parcelModal-body form table{
+    background-color:inherit;
+    
+}
+
+.parcelModal-body form table th{
+    color:black; 
+    font-size:12px; 
+    font-family:inherit;
+    font-weight: lighter;
+    
+}
+/* 
+.parcelModal-body form table td{
+    text-align: center;
+} */
+
+.parcelModal-body form table input{
+    border:none; 
+    background-color:inherit;
+    text-align: center;
+}
+
+.parcelModal-body form table button{
+    background-color:rgb(223, 219, 219, 0.3); 
+    width:100%;
+    padding: 5px;
+}
+
+
+
+.parcelModal-body form #right{
+
+    float: right;
+}
+
+.parcelModal-body form #right button{
+    font-size: 12px;
+
+    border: none;
+    padding: 5px 5px;
+    background-color: rgb(48, 39, 39, 0.6);
+    color: white;
+    cursor: pointer;
+}
+
+.parcelModal .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.parcelModal .close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancelModal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 200px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    margin: auto;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.cancelModal-content {
+    position: relative;
+    background-color: rgb(48, 39, 39, 0.6);
+    color: white;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: center;
+    padding: 2px 16px;
+    font-size: 12px;
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+
+.editModal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+.editModal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.editModal-body {
+    padding: 2px 16px;
+    text-align: center;
+}
+
+.editModal-body form{
+    font-size: 12px;
+}
+
+.editModal-body form input{
+    border: none;
+    border-bottom: ridge;
+}
+
+.editModal-body form #right{
+    float: right;
+}
+
+.editModal-body form #right button{
+    font-size: 12px;
+    border: none;
+    padding: 5px 5px;
+    background-color: rgb(48, 39, 39, 0.6);
+    color: white;
+    cursor: pointer;
+}
+
+#edit, #editStatusButton, #saveStatusChangeButton, #cancelEditButton, 
+#editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton{
+    border: none;
+    padding: 3px 5px;
+    color: white;
+    background-color:  rgb(48, 39, 39, 0.6);
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+#editStatusInput, #location, #saveStatusChangeButton, #saveLocationChangeButton, #cancelEditButton, #cancelLocationEditButton{
+    display: none;
+}
+
+#location{
+    border: none;
+    padding: 3px;
+}
