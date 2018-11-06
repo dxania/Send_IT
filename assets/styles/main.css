@@ -411,21 +411,3 @@ footer{
     cursor: pointer;
 }
 
-#edit, #editStatusButton, #saveStatusChangeButton, #cancelEditButton, 
-#editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton{
-    border: none;
-    padding: 3px 5px;
-    color: white;
-    background-color:  rgb(48, 39, 39, 0.6);
-    font-size: 12px;
-    border-radius: 5px;
-}
-
-#editStatusInput, #location, #saveStatusChangeButton, #saveLocationChangeButton, #cancelEditButton, #cancelLocationEditButton{
-    display: none;
-}
-
-#location{
-    border: none;
-    padding: 3px;
-}
