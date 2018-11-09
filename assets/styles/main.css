@@ -2,7 +2,6 @@
 
 html{
     background: url(../images/userBg.jpg) center fixed;
-    /* filter: blur(2px); */
     background-size: cover;
 }
 
@@ -25,24 +24,64 @@ header{
     font-family: 'Shadows Into Light', cursive;
 }
 
-.topnav a {
-    /* float: left; */
-    color: #f2f2f2;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-right: 50px;
+}
+
+li {
+    float: right;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
     text-align: center;
     padding: 16px 12px;
     text-decoration: none;
     font-size: 13px;
-    float: right;
-    height: inherit;
 }
 
-.topnav a:hover {
+li a:hover, .dropdown:hover .dropbtn {
+    /* background-color: rgb(32, 2, 2); */
     font-weight: bolder;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(32, 2, 2);
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 .active {
     background-color: rgb(32, 2, 2);
-    /* color: black; */
 }
 
 section{
@@ -104,18 +143,43 @@ table td{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     text-align: center;
-    
+    font-size: 13px;
 }
 
 table td button{
-    background-color: inherit;
+    background-color: rgb(32, 2, 2);
     border: none;
     cursor: pointer;
+    color: white;
+    font-size: 11px;
+    padding: 4px;
+    border-radius: 2px;
 }
 
-table td i{
-    color: rgb(178, 169, 209);
+.hovertext {
+    background-color: rgba(48, 39, 39, 0.9);
+    display: none;
+    /* visibility: hidden; */
+    width: 60px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    font-size: 12px;
+    z-index: 1;
+    /* top: 150%; */
+    left: 65%;
+    /* margin-left: -60px; */
 }
+
+button:hover + .hovertext{
+    display: block;
+}
+
+/* table td i{
+    color: rgb(178, 169, 209);
+} */
 
 footer{
     bottom: 0;
@@ -409,23 +473,4 @@ footer{
     background-color: rgb(48, 39, 39, 0.6);
     color: white;
     cursor: pointer;
-}
-
-#edit, #editStatusButton, #saveStatusChangeButton, #cancelEditButton, 
-#editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton{
-    border: none;
-    padding: 3px 5px;
-    color: white;
-    background-color:  rgb(48, 39, 39, 0.6);
-    font-size: 12px;
-    border-radius: 5px;
-}
-
-#editStatusInput, #location, #saveStatusChangeButton, #saveLocationChangeButton, #cancelEditButton, #cancelLocationEditButton{
-    display: none;
-}
-
-#location{
-    border: none;
-    padding: 3px;
 }
