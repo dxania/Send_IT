@@ -1,3 +1,14 @@
+(function(){
+    edit();
+    save();
+    cancelEdit();
+    editLocation();
+    saveNewLocation();
+    cancelLocationEdit();
+    view();
+})()
+
+
 function edit() {
     var editStatusButton = document.getElementById('editStatusButton')
     var editStatusInput = document.getElementById('editStatusInput')
@@ -87,4 +98,21 @@ function cancelLocationEdit(){
     saveLocationChangeButton.style.display = 'none';
     cancelLocationEditButton.style.display = 'none';
     presentLocation.style.display = 'inline';
+}
+
+function view(){
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }

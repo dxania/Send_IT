@@ -9,18 +9,22 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/admin_home.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../../scripts/admin_home.js"></script>
 </head>
 <body>
     <header>
         <div class="brand">
             <span>SEND It<i class="fa fa-paper-plane-o"></i></span>
         </div>
-        <div class="topnav">
-            <a href="../../index.html">LogOut <i class="fa fa-power-off"></i></a>
-            <a href="#"><i class="fa fa-gear"></i> Settings</a>
-            <a href="#" class="active"><i class="fa fa-fw fa-edit"></i> Parcels</a>
-        </div>
+        <ul>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Admin</a>
+              <div class="dropdown-content">
+                <a href="#"><i class="fa fa-gear"></i> Settings</a>
+                <a href="../../index.html"><i class="fa fa-power-off"></i> LogOut</a>
+              </div>
+            </li>
+            <li><a href="#" class="active"><i class="fa fa-fw fa-edit"></i> Parcels</a></li>
+          </ul>
     </header>
     <section>
         <div class="top">
@@ -41,11 +45,8 @@
                 <td>1</td>
                 <td>Delivered</td>
                 <td>Seeta</td>
-
                 <td>
-                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i></button>
-                    <!-- <button id="edit" onclick="edit()"><i class="fa fa-fw fa-edit"></i></button> -->
-                    <!-- <button id="cancel" onclick="ban()"><i class="fa fa-fw fa-ban"></i></button> -->
+                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i> View</button>
                 </td>
             </tr>
             <tr>
@@ -57,18 +58,16 @@
                     </select>
                     <button id="editStatusButton" onclick="edit();">Change</button>
                     <button id="saveStatusChangeButton" onclick="save();">Save Changes</button>
-                    <button id="cancelEditButton" onclick="cancelEdit();">Cancel</button>
+                    <button id="cancelEditButton" type="reset" onclick="cancelEdit();">Cancel</button>
                 </td>
                 <td><span id="presentLocation">Jinja</span> 
                     <input type="text" id="location">
                     <button id="editLocationButton" onclick="editLocation();">Change</button>
                     <button id="saveLocationChangeButton" onclick="saveNewLocation();">Save Changes</button>
-                    <button id="cancelLocationEditButton" onclick="cancelLocationEdit();">Cancel</button>
+                    <button id="cancelLocationEditButton" type="reset" onclick="cancelLocationEdit();">Cancel</button>
                 </td>
                 <td>
-                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i></button>
-                    <!-- <button id="edit" onclick="edit()"><i class="fa fa-fw fa-edit"></i></button> -->
-                    <!-- <button id="cancel" onclick="ban()"><i class="fa fa-fw fa-ban"></i></button> -->
+                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i> View</button>
                 </td>
             </tr>
         </table>
@@ -76,12 +75,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                     <span class="close">&times;</span>
-                    <p>Date: 2018-10-11 10:00:00</p>
-                    <p>Parcel ID.: 1</p>
-                    <p>Number of items: 2</p>
-                    <p>Status: Delivered</p>
-                    <p>PICK UP LOCATION: Namugongo</p>
-                    <p>DESTINATION: Zirobwe</p>
+                    <p><b>Date</b>: 2018-10-11 10:00:00</p>
+                    <p><b>Parcel ID.</b>: 1</p>
+                    <p><b>Number of items</b>: 2</p>
+                    <p><b>Status</b>: Delivered</p>
+                    <p><b>PICK UP LOCATION</b>: Namugongo</p>
+                    <p><b>DESTINATION</b>: Zirobwe</p>         
                 </div>
                     <div class="modal-body">
                         <table id="modalTable">
@@ -184,6 +183,6 @@
             </div>
     </section>
     <footer></footer>
-    
+    <script src="../../scripts/admin_home.js"></script>
 </body>
 </html>

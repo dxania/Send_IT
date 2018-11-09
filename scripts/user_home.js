@@ -1,58 +1,48 @@
+(function(){
+    view();
+    new_parcel();
+    ban();
+    edit();
+    hideModal();
+})()
+
 function view(){
-    // Get the modal
     var modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
     btn.onclick = function() {
         modal.style.display = "block";
     }
-
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
-
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 }
+
 
 function new_parcel(){
-    // Get the modal
     var modal = document.getElementById('parcelModal');
-
-    // Get the button that opens the modal
     var btn = document.getElementById("new");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
+    // var span = document.getElementsByClassName("close")[0];
+    // modal.style.display = "none";
     btn.onclick = function() {
         modal.style.display = "block";
     }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    // span.onclick = function() {
+    //     modal.style.display = "none";
+    // }
+    // window.onclick = function(event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
 }
+
+// new_parcel()
 
 
 function ban(){
@@ -68,7 +58,6 @@ function ban(){
     }
 }
 
-
 function edit(){
     var modal = document.getElementById('editModal');
     var btn = document.getElementById("edit");
@@ -83,6 +72,7 @@ function edit(){
     }
 }
 
+
 function hideModal(){
     var modal = document.getElementById('editModal');
     var btn = document.getElementById("cancel");
@@ -96,3 +86,25 @@ function hideModal(){
         }
     }
 }
+
+
+
+// function addField(n)
+// {
+//     var tr = n.parentNode.parentNode.cloneNode(true);
+//     document.getElementById('table').appendChild(tr);
+// }
+
+function addField(tableID){
+    var table=document.getElementById(tableID)
+    for(var l = 0; l < 2; l++){ 
+	    var cl = table.tBodies[0].rows[l].cloneNode(true)
+	    table.tBodies[0].appendChild( cl ) 
+    }
+}
+
+// function product(name, size){
+//     var row = '<tr><td><input type="text" placeholder="Shoes" value='+name+'></td><td><input type="number" placeholder="88"></td><td><input type="number" placeholder="900"></td><td><input type="number" placeholder="79000"></td></tr>';
+//     document.getElementById('tbody').innerHTML = row;
+// }
+
