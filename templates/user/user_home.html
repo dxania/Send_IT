@@ -8,6 +8,9 @@
     <!-- <link class="fa fa-paper-plane-o" rel="icon"> -->
     <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/user_home.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/admin_home.css" />
+
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="../../scripts/index.js"></script>
@@ -40,7 +43,7 @@
         <br><br>
         <table>
             <tr>
-                <th>Parcel ID</th>
+                <th>ID</th>
                 <th>Status</th>
                 <th>Current Location</th>
                 <th>Destination</th>
@@ -106,48 +109,39 @@
             </div>
 
             <div id="parcelModal" class="parcelModal">
-                    <div class="parcelModal-content">
-                        <div class="parcelModal-header">
-                            <span class="closebtn">&times;</span>
-                        </div>
-                        <div class="parcelModal-body">
-                            <form>
-                                <fieldset>
-                                    <legend>New Parcel</legend>
-                                    Pickup location:<br> <input type="text"  placeholder="Namugongo"><br><br>
-                                    Destination:<br> <input type="text" placeholder="Zirobwe"><br><br>
-                                    Number of items:<br> <input type="number" placeholder="58"><br><br>
-                                    <fieldset>
-                                        <legend>Items</legend>
-                                        <table id="table">
-                                            <tr>
-                                                <th>Item name</th>
-                                                <th>Weight</th>
-                                                <th>Unit price</th>
-                                                <th>Amount</th>
-                                            </tr>
-                                            <tbody>
-                                                <tr>
-                                                    <td><input type="text" placeholder="Shoes" ></td>
-                                                    <td><input type="number" placeholder="88"></td>
-                                                    <td><input type="number" placeholder="900"></td>
-                                                    <td><input type="number" placeholder="79000"></td>
-                                                </tr>
-                                            </tbody>
-                                            <tr><td colspan="4"><button onclick="addField(table);" style="color:grey;">+ Add item</button></td></tr>
-                                        </table>
-                                    </fieldset><br>
-                                    Total weight:<br> <input type="number" placeholder="40"><br><br>
-                                    Total amount:<br> <input type="number" placeholder="118,000"><br><br>
-                                    <div id="right">
-                                        <button>Save Changes</button>  <button>Cancel</button>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div> 
-                </div>
-
+                <div class="parcelModal-content">
+                    <div class="parcelModal-header">
+                        <span class="closebtn">&times;</span>
+                    </div>
+                    <div class="parcelModal-body">
+                        <form>
+                            <br>
+                            Pickup location:<br> <input type="text"  placeholder="Namugongo"><br><br>
+                            Destination:<br> <input type="text" placeholder="Zirobwe"><br><br>    
+                            <table id="table">
+                                <tr>
+                                    <th>Item name</th>
+                                    <th>Weight</th>
+                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" placeholder="Shoes" ></td>
+                                        <td><input type="number" placeholder="88"></td>
+                                    </tr>
+                                </tbody>
+                                <tr><td colspan="4"><button onclick="addField(table);" style="color:grey;">+ Add item</button></td></tr>
+                            </table>
+                            <br>
+                            Number of items:<br> <input value="1" disabled><br><br>
+                            Total weight:<br> <input value="20"  disabled><br><br>
+                            Total amount:<br> <input value="10,000"  disabled><br><br>
+                            <div id="right">
+                                <button>Save Changes</button>  <button>Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> 
+            </div>
 
             <div id="cancelModal" class="cancelModal">
                 <div class="cancelModal-content">  

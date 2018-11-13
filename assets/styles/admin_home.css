@@ -12,7 +12,33 @@
     display: none;
 }
 
+#editStatusInput{
+    font-size: 10px;
+}
+
 #location{
     border: none;
     padding: 3px;
+    width: 100px;
+}
+
+
+@media screen and (max-width:600px){
+    #edit, #editStatusButton, #saveStatusChangeButton, #cancelEditButton, 
+    #editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton{
+    border: none;
+    padding: 3px 5px;
+    font-size: 8px;
+    border-radius: 5px;
+    }
+
+    #editStatusInput{
+        font-size: 10px;
+    }
+
+    #location{
+        border: none;
+        padding: 1px;
+        width: 100px;
+    }
 }
