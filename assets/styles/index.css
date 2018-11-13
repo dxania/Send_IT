@@ -132,7 +132,9 @@ span{
         justify-content: center;
         align-items: center;
         width: 60%;
-        margin-top: 20%;
+        float: none;
+        margin: auto;
+        margin-top: 30%;
     }
     .right_container input{
         width: 150px;

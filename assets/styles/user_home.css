@@ -44,10 +44,12 @@
 .parcelModal-body form input{
     border: none;
     border-bottom: ridge;
+    width: 50%;
 }
 
 .parcelModal-body form table{
     background-color:inherit;
+    
     
 }
 
@@ -58,10 +60,6 @@
     font-weight: lighter;
     
 }
-/* 
-.parcelModal-body form table td{
-    text-align: center;
-} */
 
 .parcelModal-body form table input{
     border:none; 
@@ -128,4 +126,53 @@
 .cancelModal-body {
     padding: 30px 16px;
     text-align: center;
+}
+
+@media screen and (max-width: 800px){  
+    .parcelModal-content {
+        width: 80%;
+    }
+    
+    
+    .parcelModal-body {
+        padding: 30px 5px;
+    }
+    
+    .parcelModal-body form{
+        font-size: 8px;
+    }
+    
+    .parcelModal-body form input{
+        border: none;
+        border-bottom: ridge;
+    }
+    
+    .parcelModal-body form table{
+        background-color:inherit;
+        
+    }
+    
+    .parcelModal-body form table th{
+        font-size:8px;         
+    }
+
+
+    
+    .parcelModal-body form table button{
+        width:100%;
+        padding: 5px;
+    }
+    
+
+    .parcelModal-body form #right button{
+        font-size: 10px;
+        padding: 4px 4px;
+    }
+    
+    
+    .cancelModal-content {
+        width: 80%;
+    }
+
+
 }
