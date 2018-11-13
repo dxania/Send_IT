@@ -2,8 +2,6 @@
     view();
     new_parcel();
     ban();
-    edit();
-    hideModal();
 })()
 
 function view(){
@@ -27,67 +25,37 @@ function view(){
 function new_parcel(){
     var modal = document.getElementById('parcelModal');
     var btn = document.getElementById("new");
-    // var span = document.getElementsByClassName("close")[0];
-    // modal.style.display = "none";
+    var close = document.getElementsByClassName("closebtn")[0];
     btn.onclick = function() {
         modal.style.display = "block";
     }
-    // span.onclick = function() {
-    //     modal.style.display = "none";
-    // }
-    // window.onclick = function(event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
+    close.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
-
-// new_parcel()
 
 
 function ban(){
     var modal = document.getElementById('cancelModal');
     var btn = document.getElementById("cancel");
+    var closeModal = document.getElementsByClassName("closeCancel")[0];
     btn.onclick = function() {
         modal.style.display = "block";
     }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
-function edit(){
-    var modal = document.getElementById('editModal');
-    var btn = document.getElementById("edit");
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
-
-function hideModal(){
-    var modal = document.getElementById('editModal');
-    var btn = document.getElementById("cancel");
-    btn.onclick = function() {
+    closeModal.onclick = function(){
         modal.style.display = "none";
     }
-    
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 }
-
-
 
 // function addField(n)
 // {

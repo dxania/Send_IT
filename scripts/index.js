@@ -8,12 +8,6 @@ function focussignup(){
     document.getElementById("signup").style.display = 'block';
 }
 
-// function currentUser(){
-//     var currentUser = document.getElementById("uname").value;
-//     var user = document.getElementById("user");
-//     user.value = currentUser;
-// }
-
 function validate_login() { 
     var username = document.getElementById("uname").value; 
     var password = document.getElementById("password").value; 

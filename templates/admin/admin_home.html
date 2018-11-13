@@ -19,7 +19,7 @@
             <li class="dropdown">
               <a href="javascript:void(0)" class="dropbtn">Admin</a>
               <div class="dropdown-content">
-                <a href="#"><i class="fa fa-gear"></i> Settings</a>
+                <!-- <a href="#"><i class="fa fa-gear"></i> Settings</a> -->
                 <a href="../../index.html"><i class="fa fa-power-off"></i> LogOut</a>
               </div>
             </li>
@@ -31,7 +31,6 @@
             <div class="search">
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Parcel Delivery Orders"><button type="submit"><i class="fa fa-search"></i></button>
             </div>
-            <button id="new" onclick="new_parcel()" disabled><i class="fa fa-plus"></i> New Parcel Delivery Order</button>
         </div>
         <br><br>
         <table>
@@ -112,77 +111,11 @@
                     </div>
                 </div> 
             </div>
-
-            <div id="parcelModal" class="parcelModal">
-                    <div class="parcelModal-content">
-                        <!-- <div class=parcelModal-header">
-                            <span class="close">&times;</span>
-                        </div> -->
-                        <div class="parcelModal-body">
-                            <form>
-                                <fieldset>
-                                    <legend>New Parcel</legend>
-                                    Pickup location:<br> <input type="text"  placeholder="Namugongo"><br><br>
-                                    Destination:<br> <input type="text" placeholder="Zirobwe"><br><br>
-                                    Number of items:<br> <input type="number" placeholder="58"><br><br>
-                                    <fieldset>
-                                        <legend>Items</legend>
-                                        <table>
-                                            <tr>
-                                                <th>Item name</th>
-                                                <th>Weight</th>
-                                                <th>Unit price</th>
-                                                <th>Amount</th>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" placeholder="Shoes" ></td>
-                                                <td><input type="number" placeholder="88"></td>
-                                                <td><input type="number" placeholder="900"></td>
-                                                <td><input type="number" placeholder="79000"></td>
-                                            </tr>
-                                            <tr><td colspan="4"><button>+ Add item</button></td></tr>
-                                        </table>
-                                    </fieldset><br>
-                                    Total weight:<br> <input type="number" placeholder="40"><br><br>
-                                    Total amount:<br> <input type="number" placeholder="118,000"><br><br>
-                                    <div id="right">
-                                        <button>Save Changes</button>  <button>Cancel</button>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div> 
-                </div>
-
-
-            <div id="editModal" class="editModal">
-                <div class="editModal-content">
-                    <div class="editModal-body">
-                        <form>
-                            <fieldset>
-                                <legend>Parcel 1</legend>
-                                Pickup location:<br> <input type="text" disabled value="Namugongo"><br><br>
-                                Destination:<br> <input type="text" value="Zirobwe"><br><br>
-                                Number of items:<br> <input type="text" disabled value="58"><br><br>
-                                Total weight:<br> <input type="text" disabled value="40"><br><br>
-                                Total amount:<br> <input type="text" disabled value="118,000"><br><br>
-                                <div id="right">
-                                    <button>Save Changes</button>  <button id="cancel" onclick="hideModal()">Cancel</button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div> 
-            </div>
-
-            <div id="cancelModal" class="cancelModal">
-                <div class="cancelModal-content">                 
-                    <p>Are you sure you want to cancel this order?</p>
-                    <button>Yes</button><button>No</button>
-                </div> 
-            </div>
     </section>
-    <footer></footer>
+    <footer>
+        <span>Send IT &copy; 2018</span>
+    </footer>
     <script src="../../scripts/admin_home.js"></script>
+    <script src="../../scripts/main.js"></script>
 </body>
 </html>
