@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SendIT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link class="fa fa-paper-plane-o" rel="icon"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/user_settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="../../scripts/index.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <span>SEND It<i class="fa fa-paper-plane-o"></i></span>
+        </div>
+        <ul>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">User</a>
+              <div class="dropdown-content">
+                <a href="../user/user_settings.html" class="active"><i class="fa fa-gear"></i> Settings</a>
+                <a href="../../index.html"><i class="fa fa-power-off"></i> LogOut</a>
+              </div>
+            </li>
+            <li><a href="../user/user_home.html"><i class="fa fa-fw fa-edit"></i> Parcels</a></li>
+          </ul>
+    </header>
+    <section>
+        <table class="settingsContainer">
+            <tr>
+               <td width="40%" colspan="2" rowspan="2">
+                   <i class="fa fa-user" id="i"></i><br>
+                   Dee 
+                </td> 
+                <td></td>
+                <td>All Parcels<br><br><br><br> <span class="bigBox">5</span></td>
+                <td></td>
+                <td>
+                    <td>
+                        
+                        <tr>
+                            <td>Delivered  <br><br> <span class="box" id="delivered">1</span></td>
+                            <td>Pending <br><br> <span class="box" id="pending">3</span></td>
+                            <td>Cancelled <br><br> <span class="box" id="cancelled">1</span></td>
+                        </tr>
+                    </td>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+    </section>
+    <footer></footer>
+    <script src="../../scripts/user_home.js"></script>
+</body>
+</html>

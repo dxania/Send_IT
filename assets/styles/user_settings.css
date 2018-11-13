@@ -1,0 +1,102 @@
+
+.settingsContainer{
+    width: 70%;
+    margin: auto;
+    height: 400px;
+    border: 1px solid #ddd; 
+    background-color: rgba(48, 39, 39, 0.8);
+}
+
+table td{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 19px;
+}
+
+#i{
+    font-size:300px;
+}
+
+.box{
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#delivered{
+    background-color: green;
+    color: white;
+}
+
+#pending{
+    background-color: white;
+    color: rgb(32, 2, 2);
+}
+
+#cancelled{
+    background-color: red;
+    color: white;
+}
+
+.bigBox{
+    background-color: white;
+    border-radius: 5px;
+    padding: 30px;
+    color: rgb(32, 2, 2);
+    text-align: center;
+    font-size: 50px;
+}
+
+
+@media screen and (max-width: 600px){
+    .settingsContainer{
+        float: none;
+        margin: auto;
+        height: 300px;
+    }
+    
+    table td{
+
+        font-size: 11px;
+    }
+
+    #i{
+        font-size:150px;
+    }
+    
+    .box{
+        padding: 10px;
+    }
+    
+    .bigBox{
+        padding: 20px;
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width: 900px){
+    .settingsContainer{
+        float: none;
+        margin: auto;
+        height: 300px;
+    }
+    
+    table td{
+        font-size: 14px;
+    }
+
+    #i{
+        font-size:200px;
+    }
+    
+    .box{
+        padding: 15px;
+    }
+    
+    .bigBox{
+        padding: 25px;
+        font-size: 35px;
+    }
+}
