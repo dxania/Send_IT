@@ -474,3 +474,51 @@ footer{
     color: white;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 600px){
+
+    header{
+        height: 45px;
+    }
+
+    .brand{
+        font-size: 18px;
+        padding: 10px;
+        margin-left: 3px;
+    }
+
+    ul {
+        margin-right: 35px;
+    }
+    
+    li a, .dropbtn {
+        font-size: 10px;
+    }
+
+    .dropdown-content {
+        min-width: 65px;
+    }
+
+    .search input[type=text] {
+        margin-left: 10%;
+        padding: 6px;
+        font-size: 13px;
+        width: 60%;
+      }
+    
+    .search button {
+        width: 15%;
+        padding: 6px;
+        font-size: 13px;
+
+      }
+
+      #new{
+        /* margin-right: 20%;  */
+        margin: auto;
+
+        padding:6px 40px; 
+    }
+
+}
