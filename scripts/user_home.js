@@ -57,12 +57,6 @@ function ban(){
     }
 }
 
-// function addField(n)
-// {
-//     var tr = n.parentNode.parentNode.cloneNode(true);
-//     document.getElementById('table').appendChild(tr);
-// }
-
 function addField(tableID){
     var table=document.getElementById(tableID)
     for(var l = 0; l < 2; l++){ 
@@ -71,8 +65,4 @@ function addField(tableID){
     }
 }
 
-// function product(name, size){
-//     var row = '<tr><td><input type="text" placeholder="Shoes" value='+name+'></td><td><input type="number" placeholder="88"></td><td><input type="number" placeholder="900"></td><td><input type="number" placeholder="79000"></td></tr>';
-//     document.getElementById('tbody').innerHTML = row;
-// }
 

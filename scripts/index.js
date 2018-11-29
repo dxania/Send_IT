@@ -1,11 +1,35 @@
-function focusLogin(){
-    document.getElementById("login").style.display = 'block';
-    document.getElementById("signup").style.display = 'none';
-}
+function validate_signup(){
+    var uname = document.getElementById("user_name").value;
+    var email = document.getElementById("user_email").value;
+    var password = document.getElementById("user_password").value;
 
-function focussignup(){
-    document.getElementById("login").style.display = 'none';
-    document.getElementById("signup").style.display = 'block';
+    console.log(uname +"" + email + ""+ password);
+
+    var formdata = {
+        "user_name":uname, 
+        "user_email":email, 
+        "user_password":password
+    }
+        
+    console.log(formdata)
+
+    fetch('http://127.0.0.1:5000/api/v1/auth/signup',{
+        method: 'post',
+        headers: {
+            "Content-Type":"application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
+        body:JSON.stringify(formdata)
+    })
+        .then(response => response.json())
+        .then((data) => {
+            if((data).message === "User " + uname + " successfully created"){
+                alert(uname + ' successfully registered. Login to proceed');
+                focusLogin()
+            }else{
+                alert((data).message)
+            }
+        })
 }
 
 function validate_login() { 
@@ -22,29 +46,14 @@ function validate_login() {
     }
 } 
 
-function validate_signup(){
-    var re = /[A-Za-z]/;
-    var fname = document.getElementById("fname").value;
-    if(!fname.match(re)){
-        document.getElementById("err").innerHTML = "First name must be letters";
-    }
-    
-    var lname = document.getElementById("lname").value;
-    if(!lname.test(re)){
-        document.getElementById("err").innerHTML = "Last name must be letters";
-    }
-
-    var re = /\S+@\S+\.\S+/;
-    var email = document.getElementById("email").value;
-    if(!email.test(re)){
-        document.getElementById("err").innerHTML = "Please write a valid email address name@mail.domainname";
-    }
-
-    var password = document.getElementById("password").value;
-    var cpassword = document.getElementById("cpassword").value;
-
-    if(password !== cpassword){
-        document.getElementById("err").innerHTML = "The two passwords do not match";
-    }
+function focusLogin(){
+    document.getElementById("login").style.display = 'block';
+    document.getElementById("signup").style.display = 'none';
 }
+
+function focussignup(){
+    document.getElementById("login").style.display = 'none';
+    document.getElementById("signup").style.display = 'block';
+}
+
 
