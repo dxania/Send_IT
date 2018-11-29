@@ -44,8 +44,8 @@
                     <i class="fa fa-user-circle"></i>
                 </div><br>
                 <form>
-                    <input type="text" id="uname" placeholder="user or admin" required>
-                    <input type="password" id="password" placeholder="user for user or root for admin" required><br>
+                    <input type="text" id="user_name" required>
+                    <input type="password" id="user_password" required><br>
                     <p id="err"></p>
                     <button class="loginButton" onclick="validate_login(); return false;">Login</button><br>  
                     <span>or</span><br>
@@ -58,12 +58,9 @@
                 </div><br>
                 <form>
                     <input type="text" id="user_name" placeholder="User Name" required>
-                    <!-- <p id="er"></p> -->
                     <input type="email" id="user_email" placeholder="Email" required>
-                    <!-- <p id="er1"></p> -->
                     <input type="password" id="user_password" placeholder="Password" required>
-                    <!-- <input type="password" id="cpassword" placeholder="Confirm Password" required> -->
-                    <!-- <p id="er2"></p> -->
+                    <p id="errs"></p>
                     <button class="signupButton" onclick="validate_signup(); return false;">Create Account</button>  <span style="color:whitesmoke;">or</span> <button class="option" onclick="focusLogin()">Login Instead</button>
                 </form>
             </div>

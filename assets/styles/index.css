@@ -115,7 +115,7 @@ span{
     color:whitesmoke;
 }
 
-#err{
+#err, #errs{
     color:rgb(240, 57, 57);
     font-size: 12px;
     font-weight: bold;

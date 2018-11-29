@@ -27,23 +27,39 @@ function validate_signup(){
                 alert(uname + ' successfully registered. Login to proceed');
                 focusLogin()
             }else{
-                alert((data).message)
+                errmsg = (data).message
+                document.getElementById("errs").innerHTML = errmsg;
             }
         })
 }
 
 function validate_login() { 
-    var username = document.getElementById("uname").value; 
-    var password = document.getElementById("password").value; 
-    if(username == "user" && password == "user") { 
-        document.getElementById("err").innerHTML = "";
-        location.href = "templates/user/user_home.html"
-    } else if (username== "admin" && password == "root") {
-        document.getElementById("err").innerHTML = "";
-        location.href = "templates/admin/admin_home.html"
-    } else if (username !== "user" && password !== "user" || username !== "admin" && password !== "root") {
-        document.getElementById("err").innerHTML = "Incorrect username or password";
+    var username = document.getElementById("user_name").value; 
+    var password = document.getElementById("user_password").value; 
+    var formdata = {
+        "user_name":username, 
+        "user_password":password
     }
+
+    fetch('http://127.0.0.1:5000/api/v1/auth/login',{
+        method: 'post',
+        headers: {
+            "Content-Type":"application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
+        body:JSON.stringify(formdata)
+    })
+        .then(response => response.json())
+        .then((data) => {
+            if((data).message === "You have successfully been logged in as admin"){
+                location.href = "templates/admin/admin_home.html"
+            } else if((data).message === "You have successfully been logged in as " + username){
+                location.href = "templates/user/user_home.html"
+            } else{
+                errmsg = (data).message
+                document.getElementById("err").innerHTML = errmsg;
+            }
+        })
 } 
 
 function focusLogin(){
