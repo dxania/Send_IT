@@ -1,8 +1,8 @@
-(function(){
-    editLocation();
-    saveNewLocation();
-    cancelLocationEdit();
-})()
+// (function(){
+//     editLocation();
+//     saveNewLocation();
+//     cancelLocationEdit();
+// })()
 
 function editLocation() {
     var editLocationButton = document.getElementById('editLocationButton')

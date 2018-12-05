@@ -183,26 +183,26 @@ footer span{
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 50%;
+    width: 32%;
 }
 
 .modal-header {
     padding: 2px 16px;
-    background-color: white;
-    color: black;
-    margin-left: 3%;
+    background-color: rgb(48, 39, 39);
+    color: white;
     font-size: 12px;
 }
 
 .modal-body {
-    padding: 0;
+    padding: 5%;
+    font-size: 12px;
 }
 
 .modal-footer {
-    margin-left: 3%;
+    /* margin-left: 3%; */
     padding: 22px 16px;
-    background-color: white;
-    color: black;
+    background-color: rgb(48, 39, 39);
+    color: white;
     font-size: 12px;
 }
 
