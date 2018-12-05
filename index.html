@@ -44,14 +44,15 @@
                     <i class="fa fa-user-circle"></i>
                 </div><br>
                 <form>
-                    <input type="text" id="user_name" required>
-                    <input type="password" id="user_password" required><br>
+                    <input type="text" id="login_name" required>
+                    <input type="password" id="login_password" required><br>
                     <p id="err"></p>
-                    <button class="loginButton" onclick="validate_login(); return false;">Login</button><br>  
+                    <button class="loginButton" onclick="login(); return false;">Login</button><br>  
                     <span>or</span><br>
-                    <button class="option" onclick="focussignup()">Create an Account</button>
+                    <button class="option" onclick="focusSignup();">Create an Account</button>
                 </form>
             </div>
+            
             <div id="signup">
                 <div class="icon">
                     <i class="fa fa-user-plus"></i>
@@ -61,7 +62,7 @@
                     <input type="email" id="user_email" placeholder="Email" required>
                     <input type="password" id="user_password" placeholder="Password" required>
                     <p id="errs"></p>
-                    <button class="signupButton" onclick="validate_signup(); return false;">Create Account</button>  <span style="color:whitesmoke;">or</span> <button class="option" onclick="focusLogin()">Login Instead</button>
+                    <button class="signupButton" onclick="signup(); return false;">Create Account</button>  <span style="color:whitesmoke;">or</span> <button class="option" onclick="focusLogin();">Login Instead</button>
                 </form>
             </div>
             

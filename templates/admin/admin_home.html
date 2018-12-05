@@ -33,84 +33,22 @@
             </div>
         </div>
         <br><br>
-        <table>
-            <tr>
-                <th>Parcel ID</th>
-                <th>Status</th>
-                <th>Present Location</th>
-                <th>Actions</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Delivered</td>
-                <td>Seeta</td>
-                <td>
-                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i> View</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><span id="parcelStatus">In-transit</span> 
-                    <select id="editStatusInput">
-                        <option value="delivered">Delivered</option>
-                        <option value="pending">In-transit</option>
-                    </select>
-                    <button id="editStatusButton" onclick="edit();">Change</button>
-                    <button id="saveStatusChangeButton" onclick="save();">Save Changes</button>
-                    <button id="cancelEditButton" type="reset" onclick="cancelEdit();">Cancel</button>
-                </td>
-                <td><span id="presentLocation">Jinja</span> 
-                    <input type="text" id="location">
-                    <button id="editLocationButton" onclick="editLocation();">Change</button>
-                    <button id="saveLocationChangeButton" onclick="saveNewLocation();">Save Changes</button>
-                    <button id="cancelLocationEditButton" type="reset" onclick="cancelLocationEdit();">Cancel</button>
-                </td>
-                <td>
-                    <button id="myBtn" onclick="view()"><i class="fa fa-fw fa-eye"></i> View</button>
-                </td>
-            </tr>
+        <table id="allparcels">
+            <thead>
+                <tr>
+                    <th>Parcel ID</th>
+                    <th>Status</th>
+                    <th>Present Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
         </table>
         <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <span class="close">&times;</span>
-                    <p><b>Date</b>: 2018-10-11 10:00:00</p>
-                    <p><b>Parcel ID.</b>: 1</p>
-                    <p><b>Number of items</b>: 2</p>
-                    <p><b>Status</b>: Delivered</p>
-                    <p><b>PICK UP LOCATION</b>: Namugongo</p>
-                    <p><b>DESTINATION</b>: Zirobwe</p>         
-                </div>
-                    <div class="modal-body">
-                        <table id="modalTable">
-                            <tr>
-                                <th>ITEM</th>   
-                                <th>WEIGHT(kg)</th>
-                                <th>UNIT PRICE</th>
-                                <th>AMOUNT</th>
-                            </tr>
-                            <tr>
-                                <td>Super glue</td>
-                                <td>30</td>
-                                <td>1,000</td>
-                                <td>30,000</td>
-                            </tr>
-                            <tr>
-                                <td>Socks</td>
-                                <td>10</td>
-                                <td>5,800</td>
-                                <td>58,000</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                    <span>Created by: Daizy Obura</span>
-                    <div id="right">Total Weight(kg): 40 <br>
-                        Total Amount: 118,000 
-                    </div>
-                    </div>
-                </div> 
-            </div>
+        </div>
+        
     </section>
     <footer>
         <span>Send IT &copy; 2018</span>
