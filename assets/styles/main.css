@@ -116,7 +116,13 @@ section{
     border: 1px solid grey;
     border-left: none; 
     cursor: pointer;
-  }
+}
+
+#error{
+    color:rgb(240, 57, 57);
+    font-size: 12px;
+    font-weight: bold;
+}
 
 table{
     width: 70%;
@@ -211,14 +217,14 @@ footer span{
     margin-right:5%;
 }
 
-.close, .closebtn, .closeCancel {
+.close, .closebtn, .closeCancel, .closeButton {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover, .closebtn:hover, .closeCancel:hover, .close:focus, .closebtn:focus, .closeCancel:focus {
+.close:hover, .closebtn:hover, .closeCancel:hover, .close:focus, .closebtn:focus, .closeCancel:focus, .closeButton:hover, .closeButton:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
