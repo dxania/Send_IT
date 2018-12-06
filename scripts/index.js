@@ -25,10 +25,10 @@ function signup(){
         .then(response => response.json())
         .then(data => {
             if(data.message === "User " + user_name + " successfully created"){
-                alert(uname + ' successfully registered. Login to proceed');
+                alert(user_name + ' successfully registered. Login to proceed');
                 focusLogin();
             }else{
-                errmsg = data.message;
+                let errmsg = data.message;
                 document.getElementById("errs").innerHTML = errmsg;
             }
         }).catch(error => {
@@ -56,11 +56,23 @@ function login() {
         .then((data) => {
             let access_token = (data).access_token;
             localStorage.setItem("access_token", access_token);
-            if((data).message === "You have successfully been logged in as admin"){
-                location.href = "templates/admin/admin_home.html"
-            } else if((data).message === "You have successfully been logged in as " + username){
-                location.href = "templates/user/user_home.html"
+            localStorage.setItem("username", username);
+            var playload = JSON.parse(atob(access_token.split('.')[1]));
+            console.log(playload.identity.role);
+            var role = playload.identity.role;
+            // if((data).message === "You have successfully been logged in as admin"){
+            //     location.href = "templates/admin/admin_home.html"
+            // } else if((data).message === "You have successfully been logged in as " + username){
+            //     location.href = "templates/user/user_home.html"
                 
+            // } else{
+            //     var errmsg = (data).message;
+            //     document.getElementById("err").innerHTML = errmsg;
+            // }
+            if(role == true){
+                location.href = "templates/admin/admin_home.html"
+            } else if(role == false){
+                location.href = "templates/user/user_home.html"
             } else{
                 var errmsg = (data).message;
                 document.getElementById("err").innerHTML = errmsg;

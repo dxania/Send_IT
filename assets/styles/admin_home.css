@@ -1,5 +1,6 @@
 #edit, #editStatusButton, #saveStatusChangeButton, #cancelEditButton, 
-#editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton{
+#editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton,
+#editDestinationButton, #saveDestinationChangeButton, #cancelDestinationEditButton{
     border: none;
     padding: 3px 5px;
     color: white;
@@ -8,7 +9,7 @@
     border-radius: 5px;
 }
 
-#editStatusInput, #location, #saveStatusChangeButton, #saveLocationChangeButton, #cancelEditButton, #cancelLocationEditButton{
+#editStatusInput, #location, #destination, #saveStatusChangeButton, #saveLocationChangeButton, #saveDestinationChangeButton, #cancelEditButton, #cancelLocationEditButton, #cancelDestinationEditButton{
     display: none;
 }
 
@@ -16,7 +17,7 @@
     font-size: 10px;
 }
 
-#location{
+#location, #destination{
     border: none;
     padding: 3px;
     width: 100px;
@@ -25,7 +26,8 @@
 
 @media screen and (max-width:600px){
     #edit, #editStatusButton, #saveStatusChangeButton, #cancelEditButton, 
-    #editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton{
+    #editLocationButton, #saveLocationChangeButton, #cancelLocationEditButton,
+    #editDestinationButton, #saveDestinationChangeButton, #cancelDestinationEditButton{
     border: none;
     padding: 3px 5px;
     font-size: 8px;
