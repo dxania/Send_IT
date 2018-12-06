@@ -30,6 +30,11 @@ table td{
     color: white;
 }
 
+#intransit{
+    background-color: orangered;
+    color: white;
+}
+
 #pending{
     background-color: white;
     color: rgb(32, 2, 2);

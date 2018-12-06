@@ -20,19 +20,27 @@
         </div>
         <ul>
             <li class="dropdown">
-              <a href="javascript:void(0)" class="dropbtn" id="usernayme"><i class="fa fa-fw fa-user-circle"></i> </a>
-              <div class="dropdown-content">
-                <a href="../user/user_settings.html" class="active"><i class="fa fa-user"></i> Profile</a>
-                <a href="../../index.html"><i class="fa fa-power-off"></i> LogOut</a>
-              </div>
+                <a href="javascript:void(0)" class="dropbtn" id="usernayme"><i class="fa fa-fw fa-user-circle"></i> </a>
+                <div class="dropdown-content">
+                  <a href="#" class="active"><i class="fa fa-user"></i> Profile</a>
+                  <a href="../../index.html"><i class="fa fa-power-off"></i> LogOut</a>
+                </div>
             </li>
-            <li><a href="../user/user_home.html"><i class="fa fa-fw fa-edit"></i> My Parcels</a></li>
-          </ul>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" id="not"><i class="fa fa-fw fa-bell-o"></i> Notifications <span id="number"></span> </a>
+                <div class="dropdown-content" id="nots">
+                    
+                </div>
+            </li>
+            <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Users</a></li>
+            <li><a href="admin_parcels.html"><i class="fa fa-fw fa-edit"></i> My Parcels</a></li>
+            <li><a href="admin_home.html"><i class="fa fa-fw fa-edit"></i> All Parcels</a></li>
+        </ul>
     </header>
     <section>
         <table class="settingsContainer">
             <tr>
-                <td width="40%" colspan="2" rowspan="2">
+               <td width="40%" colspan="2" rowspan="2">
                    <i class="fa fa-user" id="i"></i><br>
                    <span id="info"></span>
                 </td> 
@@ -40,8 +48,7 @@
                 <td>All Parcels<br><br><br><br> <span class="bigBox" id="total"> </span></td>
                 <td></td>
                 <td>
-                    <td>
-                        
+                    <td> 
                         <tr>
                             <td>Delivered  <br><br> <span class="box" id="delivered"></span></td>
                             <td>In-transit <br><br> <span class="box" id="intransit"></span></td>

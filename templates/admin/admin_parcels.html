@@ -5,15 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SendIT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link class="fa fa-paper-plane-o" rel="icon"> -->
     <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/user_home.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/admin_home.css" />
-
-    
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/styles/user_home.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <script src="../../scripts/index.js"></script>
-
 </head>
 <body>
     <header>
@@ -22,13 +18,21 @@
         </div>
         <ul>
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" id="usernayme"><i class="fa fa-fw fa-user-circle"></i> </a>
+            <a href="javascript:void(0)" class="dropbtn" id="usernayme"><i class="fa fa-fw fa-user-circle"></i> </a>
                 <div class="dropdown-content">
-                    <a href="../user/user_settings.html"><i class="fa fa-user"></i> Profile</a>
+                    <a href="admin_settings.html"><i class="fa fa-user"></i> Profile</a>
                     <a href="../../index.html"><i class="fa fa-power-off"></i> LogOut</a>
                 </div>
             </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" id="not"><i class="fa fa-fw fa-bell-o"></i> Notifications <span id="number"></span> </a>
+                <div class="dropdown-content" id="nots">
+                  
+                </div>
+            </li>
+            <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Users</a></li>
             <li><a href="#" class="active"><i class="fa fa-fw fa-edit"></i> My Parcels</a></li>
+            <li><a href="admin_home.html"><i class="fa fa-fw fa-edit"></i> All Parcels</a></li>
         </ul>
     </header>
     <section>
@@ -39,7 +43,7 @@
             <button id="new" onclick="createParcelModal();"><i class="fa fa-plus"></i> New Parcel Delivery Order</button>
         </div>
         <br><br>
-        <table>
+        <table id="allparcels">
             <thead>
                 <tr>
                     <th>Parcel ID</th>
@@ -54,6 +58,7 @@
             </tbody>
         </table>
         <div id="details" class="modal">
+            
         </div>
 
         <div id="parcelModal" class="parcelModal">
@@ -77,7 +82,6 @@
                 </div>
             </div> 
         </div>
-
         <div id="cancelModal" class="cancelModal">
             <div class="cancelModal-content">  
                 <div class="cancelModal-header">
@@ -89,16 +93,16 @@
                 </div>                    
             </div> 
         </div>
+        
     </section>
     <footer>
         <span>Send IT &copy; 2018</span>
     </footer>
     <script src="../../scripts/createParcel.js"></script>
+    <script src="../../scripts/getParcels.js"></script>
     <script src="../../scripts/editDestination.js"></script>
     <script src="../../scripts/getAParcel.js"></script>
-    <script src="../../scripts/getParcels.js"></script>
     <script src="../../scripts/search.js"></script>
     <script src="../../scripts/notification.js"></script>
-
 </body>
 </html>

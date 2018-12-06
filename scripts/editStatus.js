@@ -1,12 +1,25 @@
-(function(){
-    edit();
-    save();
-    cancelEdit();
-    view();
-})()
+"use strict";
 
+function editstatus(parcel_id){
+    var token = localStorage.getItem("access_token");
+    var newStatus = {"status": document.getElementById('editStatusInput').value}
 
-function edit() {
+    fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/status`,{
+        method: 'put',
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization": `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "*"
+        },
+        body:JSON.stringify(newStatus)
+    }).then(response => response.json())
+    .then(resdata => {
+        alert(resdata.message);
+        window.location.reload();
+    })
+}
+
+function edit(parcelId) {
     var editStatusButton = document.getElementById('editStatusButton')
     var editStatusInput = document.getElementById('editStatusInput')
     var saveStatusChangeButton = document.getElementById('saveStatusChangeButton')
@@ -18,11 +31,13 @@ function edit() {
     saveStatusChangeButton.style.display = 'inline';
     cancelEditButton.style.display = 'inline';
     parcelStatus.style.display = 'none';
-    // editStatusInput.value = parcelStatus.innerHTML;
-    
-};
 
-function save(){
+    console.log(parcelId);
+}
+
+
+function save(parcel_id){
+    editstatus(parcel_id)
     var editStatusButton = document.getElementById('editStatusButton')
     var editStatusInput = document.getElementById('editStatusInput')
     var saveStatusChangeButton = document.getElementById('saveStatusChangeButton')
@@ -49,21 +64,4 @@ function cancelEdit(){
     saveStatusChangeButton.style.display = 'none';
     cancelEditButton.style.display = 'none';
     parcelStatus.style.display = 'inline';
-}
-
-function view(){
-    var modal = document.getElementById('myModal');
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
 }
