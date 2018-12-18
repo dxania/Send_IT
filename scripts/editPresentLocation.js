@@ -1,10 +1,13 @@
 "use strict";
 
 function editPresentLocation(parcel_id){
-    var token = localStorage.getItem("access_token");
-    var newLocation = {"present_location": document.getElementById('location').value}
+    let token = localStorage.getItem("access_token");
+    let newLocation = {"present_location": document.getElementById('loc').value};
 
-    fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/present_location`,{
+    if (!document.getElementById("loc").checkValidity()) {
+        document.getElementById("presErr").innerHTML = document.getElementById("loc").validationMessage;
+    }else{
+        fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/present_location`,{
         method: 'put',
         headers: {
             "Content-Type":"application/json",
@@ -14,53 +17,33 @@ function editPresentLocation(parcel_id){
         body:JSON.stringify(newLocation)
     }).then(response => response.json())
     .then(resdata => {
-        alert(resdata.message);
-        window.location.reload();
-
+        document.getElementById("presErr").innerHTML = resdata.message
     })
+    }
 }
 
-function editLocation() {
-    var editLocationButton = document.getElementById('editLocationButton')
-    var location = document.getElementById('location')
-    var saveLocationChangeButton = document.getElementById('saveLocationChangeButton')
-    var cancelLocationEditButton = document.getElementById('cancelLocationEditButton')
-    var presentLocation = document.getElementById('presentLocation')
+function editl(parcelId){
+    let modal = document.getElementById('editloc');
+    modal.style.display = "block";
+    let button1 = document.getElementById("saveLocationChangeButto");
+    let button2 = document.getElementById("cancelLocationEditButto");
+    let id = document.getElementById("id");
+    id.innerHTML = parcelId;
+    let close = document.querySelector(".closeeditl");
+    close.onclick = function() {
+        modal.style.display = "none";
+    };
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
 
-    editLocationButton.style.display = 'none';
-    location.style.display = 'inline';
-    saveLocationChangeButton.style.display = 'inline';
-    cancelLocationEditButton.style.display = 'inline';
-    presentLocation.style.display = 'none';
-    location.value = presentLocation.innerHTML;
-};
+    button1.onclick = function () {
+        editPresentLocation(parcelId);
+    }
 
-function saveNewLocation(parcel_id){
-    editPresentLocation(parcel_id);
-    var editLocationButton = document.getElementById('editLocationButton')
-    var location = document.getElementById('location')
-    var saveLocationChangeButton = document.getElementById('saveLocationChangeButton')
-    var cancelLocationEditButton = document.getElementById('cancelLocationEditButton')
-    var presentLocation = document.getElementById('presentLocation')
-
-    editLocationButton.style.display = 'inline';
-    location.style.display = 'none';
-    saveLocationChangeButton.style.display = 'none';
-    cancelLocationEditButton.style.display = 'none';
-    presentLocation.style.display = 'inline';
-    presentLocation.value = location.innerHTML;
-}
-
-function cancelLocationEdit(){
-    var editLocationButton = document.getElementById('editLocationButton')
-    var location = document.getElementById('location')
-    var saveLocationChangeButton = document.getElementById('saveLocationChangeButton')
-    var cancelLocationEditButton = document.getElementById('cancelLocationEditButton')
-    var presentLocation = document.getElementById('presentLocation')
-
-    editLocationButton.style.display = 'inline';
-    location.style.display = 'none';
-    saveLocationChangeButton.style.display = 'none';
-    cancelLocationEditButton.style.display = 'none';
-    presentLocation.style.display = 'inline';
+    button2.onclick = function(){
+        modal.style.display = "none";
+    }
 }

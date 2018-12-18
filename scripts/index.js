@@ -3,38 +3,56 @@
 function signup(){
     let user_name = document.getElementById("user_name").value;
     let user_email = document.getElementById("user_email").value;
+    let user_mobile = document.getElementById("user_mobile").value;
     let user_password = document.getElementById("user_password").value;
+    let confirm_password = document.getElementById("confirm_user_password").value;
 
-    console.log(user_name +"" + user_email + ""+ user_password);
+    if (!document.getElementById("user_name").checkValidity() || !document.getElementById("user_email").checkValidity() || 
+    !document.getElementById("user_mobile").checkValidity() || !document.getElementById("user_password").checkValidity()) {
+        document.getElementById("err1").value = document.getElementById("user_name").validationMessage;
+        document.getElementById("err2").innerHTML = document.getElementById("user_email").validationMessage;
+        document.getElementById("err3").innerHTML = document.getElementById("user_mobile").validationMessage;
+        document.getElementById("err4").innerHTML = document.getElementById("user_password").validationMessage;
 
-    let formdata = {
-        "user_name":user_name,
-        "user_email":user_email,
-        "user_password":user_password
+    }else if(user_password!==confirm_password){
+        document.getElementById("passworderr").innerHTML = "The two passwords do no match";
+    }else{
+        let formdata = {
+            "user_name":user_name,
+            "user_email":user_email,
+            "user_mobile":user_mobile,
+            "user_password":user_password
+        }
+        console.log(formdata);
+
+        fetch('http://127.0.0.1:5000/api/v1/auth/signup',{
+            method: 'post',
+            headers: {
+                "Content-Type":"application/json",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body:JSON.stringify(formdata)
+        }).then(response => response.json())
+            .then(data => {
+                if(data.message === "User " + user_name + " successfully created"){
+                    customModal(user_name + ' successfully registered. Login to proceed');
+                    let ok = document.getElementById("ok");
+                    ok.onclick = function(){
+                        let modal = document.querySelector("#popup");
+                        modal.style.display = "none";
+                        loginContainer();
+                        document.getElementById("login_name").value = user_name;
+                    }
+                }else{
+                    let errmsg = data.message;
+                    document.getElementById("errs").innerHTML = errmsg;
+                    document.querySelector(".tooltiptext").style.display = "inline";
+                    document.getElementById("user_email").onkeyup = function () {
+                        document.querySelector(".tooltiptext").style.display = "none";
+                    }
+                }
+            })
     }
-    console.log(formdata);
-
-    fetch('http://127.0.0.1:5000/api/v1/auth/signup',{
-        method: 'post',
-        headers: {
-            "Content-Type":"application/json",
-            "Access-Control-Allow-Origin": "*"
-        },
-        body:JSON.stringify(formdata)
-    })
-        .then(response => response.json())
-        .then(data => {
-            if(data.message === "User " + user_name + " successfully created"){
-                alert(user_name + ' successfully registered. Login to proceed');
-                focusLogin();
-            }else{
-                let errmsg = data.message;
-                document.getElementById("errs").innerHTML = errmsg;
-            }
-        }).catch(error => {
-            console.log(error);
-            handleError(error);
-        })
 }
 
 function login() { 
@@ -54,39 +72,31 @@ function login() {
         body:JSON.stringify(formdata)
     }).then(res => res.json())
         .then((data) => {
-            let access_token = (data).access_token;
-            localStorage.setItem("access_token", access_token);
-            localStorage.setItem("username", username);
-            var playload = JSON.parse(atob(access_token.split('.')[1]));
-            console.log(playload.identity.role);
-            var role = playload.identity.role;
-            // if((data).message === "You have successfully been logged in as admin"){
-            //     location.href = "templates/admin/admin_home.html"
-            // } else if((data).message === "You have successfully been logged in as " + username){
-            //     location.href = "templates/user/user_home.html"
-                
-            // } else{
-            //     var errmsg = (data).message;
-            //     document.getElementById("err").innerHTML = errmsg;
-            // }
-            if(role == true){
-                location.href = "templates/admin/admin_home.html"
-            } else if(role == false){
-                location.href = "templates/user/user_home.html"
-            } else{
-                var errmsg = (data).message;
-                document.getElementById("err").innerHTML = errmsg;
+            console.log((data))
+            if((data).message){
+                document.getElementById("err").innerHTML = (data).message;
+            }else{
+                let access_token = (data).access_token;
+                localStorage.setItem("access_token", access_token);
+                localStorage.setItem("username", username);
+                let playload = JSON.parse(atob(access_token.split('.')[1]));
+                console.log(playload.identity.role);
+                let role = playload.identity.role;
+                if(role == true){
+                    location.href = "templates/admin/admin_home.html"
+                } else if(role == false){
+                    location.href = "templates/user/user_home.html"
+                }
             }
         })
-        .catch(err => console.log(err))
 }
 
-function focusLogin(){
+function loginContainer(){
     document.getElementById("login").style.display = 'block';
     document.getElementById("signup").style.display = 'none';
 }
 
-function focusSignup(){
+function signupContainer(){
     document.getElementById("login").style.display = 'none';
     document.getElementById("signup").style.display = 'block';
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 function getAParcel(parcelid){
-    var token = localStorage.getItem("access_token");
+    let token = localStorage.getItem("access_token");
     fetch(`http://localhost:5000/api/v1/parcels/${parcelid}`,{
         headers: {
             "Content-Type":"application/json",
@@ -10,31 +10,33 @@ function getAParcel(parcelid){
         }
     }).then(response => response.json())
     .then(resdata => {
-        console.log(resdata.parcel);
-        parcelData = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p><b>Date</b>: 2018-10-11 10:00:00</p>
-                    <span class="close">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <p><b>Parcel ID.</b>: ${resdata.parcel.parcel_id}</p>
-                    <p><b>Recipient Name</b>: ${resdata.parcel.recipient_name}</p>
-                    <p><b>Recipient Mobile</b>: ${resdata.parcel.recipient_mobile}</p>
-                    <p><b>Status</b>: ${resdata.parcel.status}</p>
-                    <p><b>Pick up Location</b>: ${resdata.parcel.pickup_location}</p>
-                    <p><b>Destination</b>: ${resdata.parcel.destination}</p>
-                    <p><b>Present Location</b>: ${resdata.parcel.present_location}</p>
-                </div>
-                <div class="modal-footer">
-                <span>Created by: ${resdata.parcel.user_name}</span>
-                <div id="right">Total Weight(kg): ${resdata.parcel.weight} <br>
-                    Total Amount: ${resdata.parcel.total_price}
-                </div>
-                </div>
-            </div>`;
-        // document.querySelector('#details').innerHTML = parcelData;
-        // document.querySelector('#details').innerHTML = "parcelData";
-        document.getElementById('details').innerHTML = "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj";
+        console.log(resdata);
+        document.querySelector("#date").innerHTML = resdata.parcel.date_created.slice(0,16);
+        document.querySelector("#parcelid").innerHTML = resdata.parcel.parcel_id;
+        document.querySelector("#desc").innerHTML = resdata.parcel.description;
+        document.querySelector("#rname").innerHTML = resdata.parcel.recipient_name;
+        document.querySelector("#rmob").innerHTML = resdata.parcel.recipient_mobile;
+        document.querySelector("#stat").innerHTML = resdata.parcel.status;
+        document.querySelector("#pick").innerHTML = resdata.parcel.pickup_location;
+        document.querySelector("#pres").innerHTML = resdata.parcel.present_location;
+        document.querySelector("#dest").innerHTML = resdata.parcel.destination;
+        document.querySelector("#wgt").innerHTML = resdata.parcel.weight;
     })
+}
+
+
+function display(parcelId, price, pickup_location, destination, present_location){
+    let modal = document.getElementById('maps');
+    modal.style.display = "block";
+    getAParcel(parcelId);
+    viewMap(parcelId, price, pickup_location, destination, present_location);
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+    let cls = document.querySelector(".closeview");
+    cls.onclick = function() {
+        modal.style.display = "none";
+    };
 }
