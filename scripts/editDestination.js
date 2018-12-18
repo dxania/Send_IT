@@ -1,74 +1,63 @@
 "use strict";
 
+let presentdestination = '';
+
 function editPresentDestination(parcel_id){
-    var token = localStorage.getItem("access_token");
-    var newDestination = {"destination": document.getElementById('destination').value}
+    let newdest = document.getElementById("newdest");
+    let autodest = new google.maps.places.Autocomplete(newdest);
 
-    fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/destination`,{
-        method: 'put',
-        headers: {
-            "Content-Type":"application/json",
-            "Authorization": `Bearer ${token}`,
-            "Access-Control-Allow-Origin": "*"
-        },
-        body:JSON.stringify(newDestination)
-    }).then(response => response.json())
-    .then(resdata => {
-        alert(resdata.message);
-        window.location.reload();
-
-    })
+    let token = localStorage.getItem("access_token");
+    let newDestination = {
+        "destination": document.getElementById('newdest').value,
+        "total_price": document.getElementById('newpx').value
+    }
+    if (!document.getElementById("newdest").checkValidity()) {
+        document.getElementById("newdestErr").innerHTML = document.getElementById("newdest").validationMessage;
+    }else{
+        console.log(newDestination)
+        fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/destination`,{
+            method: 'put',
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`,
+                "Access-Control-Allow-Origin": "*"
+            },
+            body:JSON.stringify(newDestination)
+        }).then(response => response.json())
+        .then(resdata => {
+            document.getElementById("newdestErr").innerHTML = resdata.message;
+        })
+    }
 }
 
-function editDestination() {
-    var editDestinationButton = document.getElementById('editDestinationButton')
-    var destination = document.getElementById('destination')
-    var saveDestinationChangeButton = document.getElementById('saveDestinationChangeButton')
-    var cancelDestinationEditButton = document.getElementById('cancelDestinationEditButton')
-    var presentDestination = document.getElementById('presentDestination')
+function editd(parcelId, price, pickup_location){
+    let modal = document.getElementById('editdest');
+    modal.style.display = "block";
+    dynamicmap(parcelId, price, pickup_location);
+    // let destination = document.getElementById('dest')
+    let p = document.getElementById("saveDestinationChangeButto");
+    let w = document.getElementById("cancelDestinationEditButto");
+    let id = document.getElementById("id");
+    id.innerHTML = parcelId;
+    // let presentDestination = presentdestination;
+    // destination.value = toString(presentDestination);
+    console.log(parcelId)
 
-    editDestinationButton.style.display = 'none';
-    destination.style.display = 'inline';
-    saveDestinationChangeButton.style.display = 'inline';
-    cancelDestinationEditButton.style.display = 'inline';
-    presentDestination.style.display = 'none';
-    destination.value = presentDestination.innerHTML;
+    let close = document.querySelector(".closeEdit");
+    close.onclick = function() {
+        modal.style.display = "none";
+    };
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
 
-    // editDestinationButton.style.display = 'inline';
-    // destination.style.display = 'none';
-    // saveDestinationChangeButton.style.display = 'none';
-    // cancelDestinationEditButton.style.display = 'none';
-    // presentDestination.style.display = 'inline';
-    // destination.value = presentDestination.innerHTML;
+    p.onclick = function () {
+        editPresentDestination(parcelId);
+    }
 
-};
-
-function saveNewDestination(parcel_id){
-    editPresentDestination(parcel_id);
-    var editDestinationButton = document.getElementById('editDestinationButton')
-    var destination = document.getElementById('destination')
-    var saveDestinationChangeButton = document.getElementById('saveDestinationChangeButton')
-    var cancelDestinationEditButton = document.getElementById('cancelDestinationEditButton')
-    var presentDestination = document.getElementById('presentDestination')
-
-    editDestinationButton.style.display = 'inline';
-    destination.style.display = 'none';
-    saveDestinationChangeButton.style.display = 'none';
-    cancelDestinationEditButton.style.display = 'none';
-    presentDestination.style.display = 'inline';
-    presentDestination.value = destination.innerHTML;
-}
-
-function cancelDestinationEdit(){
-    var editDestinationButton = document.getElementById('editDestinationButton')
-    var destination = document.getElementById('destination')
-    var saveDestinationChangeButton = document.getElementById('saveDestinationChangeButton')
-    var cancelDestinationEditButton = document.getElementById('cancelDestinationEditButton')
-    var presentDestination = document.getElementById('presentDestination')
-
-    editDestinationButton.style.display = 'inline';
-    destination.style.display = 'none';
-    saveDestinationChangeButton.style.display = 'none';
-    cancelDestinationEditButton.style.display = 'none';
-    presentDestination.style.display = 'inline';
+    w.onclick = function(){
+        modal.style.display = "none";
+    }
 }

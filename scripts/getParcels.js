@@ -1,12 +1,17 @@
 "use strict";
 
+(function(){
+    getUserParcels();
+    getParcels();
+})();
+
 (function username(){
-    var uname = localStorage.getItem("username");
+    let uname = localStorage.getItem("username");
     document.querySelector('#usernayme').innerHTML = uname;
 })();
 
-(function getParcels(){
-    var token = localStorage.getItem("access_token");
+function getParcels(){
+    let token = localStorage.getItem("access_token");
 
     fetch('http://localhost:5000/api/v1/parcels',{
         headers: {
@@ -16,50 +21,75 @@
         }
     }).then(response => response.json())
     .then(res => {
+        console.log(res);
+        if(res.msg == "Token has expired"){
+            customModal("Session expired! Login to proceed");
+            let ok = document.getElementById("ok");
+            ok.onclick = function(){
+                location.href = "../../index.html";
+            }
+        }else{
         let tdata = '';
+        let arr = [];
+        let myNewArr = [];
         res.parcels.forEach(parcel => {
-            // if(parcel.status == 'cancelled'){
-            //     console.log(parcel);
-            //     document.getElementById('editStatusButton').disabled = true;
-            //     document.getElementById('editStatusButton').style.display = 'none';
-            // }
-            tdata += `
-            <tr>
-                <td>${parcel.parcel_id}</td>
-                <td>${parcel.created_by}</td>
-                <td><span id="parcelStatus">${parcel.status}</span>
-                    <select id="editStatusInput">
-                        <option value="delivered">Delivered</option>
-                        <option value="pending">Pending</option>
-                        <option value="intransit">In-transit</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                    <button id="editStatusButton" onclick="edit(${parcel.parcel_id});">Change</button>
-                    <button id="saveStatusChangeButton" onclick="save(${parcel.parcel_id});">Save Changes</button>
-                    <button id="cancelEditButton" type="reset" onclick="cancelEdit();">Cancel</button>
-                </td>
-                <td>
-                    <span id="presentLocation">${parcel.present_location}</span>
-                    <input type="text" id="location">
-                    <button id="editLocationButton" onclick="editLocation(${parcel.parcel_id});">Change</button>
-                    <button id="saveLocationChangeButton" onclick="saveNewLocation(${parcel.parcel_id});">Save Changes</button>
-                    <button id="cancelLocationEditButton" type="reset" onclick="cancelLocationEdit();">Cancel</button>
-                </td>
-                <td>
-                    <button id="myBtn" onclick="viewParcelDetails(${parcel.parcel_id})"><i class="fa fa-fw fa-eye"></i>View</button>
-                </td>
-            </tr>`;
-        });
-        document.querySelector('tbody').innerHTML = tdata;
+            if(parcel.status=='intransit' || parcel.status=='pending'){
+                tdata += `
+                <tr>
+                    <td>${parcel.parcel_id}</td>
+                    <td>${parcel.status}</td>
+                    <td>${parcel.created_by}</td>
+                    <td>${parcel.present_location}</td>
+                    <td>${parcel.date_created.slice(0,16)}</td>
+                    <td>
+                        <button onclick="display(${parcel.parcel_id}, ${parcel.total_price}, \'`+parcel.pickup_location+`\', \'`+parcel.destination+`\', \'`+parcel.present_location+`\');"><i class="fa fa-fw fa-eye"></i>View</button>
+                        <button id="editLoc" onclick="editl(${parcel.parcel_id});"><i class="fa fa-fw fa-pencil"></i>Edit</button>
+                    </td>
+                </tr>`;
+            }else{
+                tdata += `
+                <tr>
+                    <td>${parcel.parcel_id}</td>
+                    <td>${parcel.status}</span>
+                    <td>${parcel.created_by}</td>
+                    </td>
+                    <td>${parcel.present_location}</td>
+                    <td>${parcel.date_created.slice(0,16)}</td>
+                    <td>
+                        <button onclick="display(${parcel.parcel_id}, ${parcel.total_price}, \'`+parcel.pickup_location+`\', \'`+parcel.destination+`\', \'`+parcel.present_location+`\' );"><i class="fa fa-fw fa-eye"></i>View</button>
+                        <button id="disabled" disabled onclick="editl(${parcel.parcel_id});"><i class="fa fa-fw fa-pencil"></i>Edit</button>
+                    </td>
+                </tr>`;
+            }
+                arr.push(tdata);
+                let i = arr.length - 1
+                myNewArr = arr[i].split("</tr>");
+            });
+            loadData(myNewArr, "alparcels");
+            document.getElementById("nextpg").onclick = function(){
+                nextPage(myNewArr, "alparcels")
+            }
+            document.getElementById("prevpg").onclick = function(){
+                previousPage(myNewArr, "alparcels")
+            }
+            document.getElementById("list").onclick = function(){
+                document.getElementById('alparcels').innerHTML = tdata;
+            }
+            document.getElementById("firstpg").onclick = function(){
+                loadData(myNewArr, "alparcels");
+            }
+
+        }
     })
-})();
+}
 
 
-(function getUserParcels(){
-    var token = localStorage.getItem("access_token");
-    var playload = JSON.parse(atob(token.split('.')[1]));
+function getUserParcels(){
+
+    let token = localStorage.getItem("access_token");
+    let playload = JSON.parse(atob(token.split('.')[1]));
     console.log(playload.identity.id);
-    var user_id = playload.identity.id;
+    let user_id = playload.identity.id;
 
     fetch(`http://localhost:5000/api/v1/users/${user_id}/parcels`,{
         headers: {
@@ -69,66 +99,76 @@
         }
     }).then(response => response.json())
     .then(res => {
-        let tdata = '';
-        res.parcels.forEach(parcel => {
-            tdata += `
-            <tr>
-                <td>${parcel.parcel_id}</td>
-                <td>${parcel.status}</td>
-                <td>${parcel.present_location}</td>
-                <td><span id="presentDestination">${parcel.destination}</span>
-                    <input type="text" id="destination">
-                    <button id="editDestinationButton" onclick="editDestination();">Change</button>
-                    <button id="saveDestinationChangeButton" onclick="saveNewDestination(${parcel.parcel_id});">Save Changes</button>
-                    <button id="cancelDestinationEditButton" type="reset" onclick="cancelDestinationEdit();">Cancel</button>
-                </td>
-                <td>
-                    <button id="myBtn" onclick="viewParcelDetails(${parcel.parcel_id});"><i class="fa fa-fw fa-eye"></i> View</button>
-                    <button id="cancelbtn" onclick="cancelParcelModal(${parcel.parcel_id});"><i class="fa fa-fw fa-ban"></i> Cancel</button>
-                </td>
-            </tr>
-            </tr>`;
-        });
-        document.querySelector('#parcels').innerHTML = tdata;
+        console.log(res)
+        if(res.msg == "Token has expired"){
+            customModal("Session expired! Login to proceed");
+            let ok = document.getElementById("ok");
+            ok.onclick = function(){
+                location.href = "../../index.html";
+            }
+        }else{
+            let ttl = document.getElementById("ttl");
+            ttl.innerHTML = res.parcels.length;
+            let tabledata = '';
+            let cancelled = '';
+            let arr = [];
+            let myNewArr = [];
+            let arr1 = [];
+            res.parcels.forEach(function(parcel){
+                if(parcel.status=='intransit' || parcel.status=='pending'){
+                tabledata += `
+                <tr>
+                    <td>${parcel.parcel_id}</td>
+                    <td>${parcel.status}</td>
+                    <td>${parcel.present_location}</td>
+                    <td>${parcel.destination}</td>
+                    <td>${parcel.date_created.slice(0,16)}</td>
+                    <td>
+                        <button onclick="display(${parcel.parcel_id}, ${parcel.total_price}, \'`+parcel.pickup_location+`\', \'`+parcel.destination+`\', \'`+parcel.present_location+`\' );"><i class="fa fa-fw fa-eye"></i>View</button>
+                        <button id="editbtn" onclick="editd(${parcel.parcel_id}, ${parcel.total_price}, \'`+parcel.pickup_location+`\');"><i class="fa fa-fw fa-pencil"></i> Edit</button>
+                        <button id="cancelbtn" onclick="cancelParcelModal(${parcel.parcel_id});"><i class="fa fa-fw fa-ban"></i> Cancel</button>
+                    </td>
+                </tr>`;
+                }else{
+                    tabledata += `
+                    <tr>
+                        <td>${parcel.parcel_id}</td>
+                        <td>${parcel.status}</td>
+                        <td>${parcel.present_location}</td>
+                        <td>${parcel.destination}</td>
+                        <td>${parcel.date_created.slice(0,16)}</td>
+                        <td>
+                            <button onclick="display(${parcel.parcel_id}, ${parcel.total_price}, \'`+parcel.pickup_location+`\', \'`+parcel.destination+`\');"><i class="fa fa-fw fa-eye"></i>View</button>
+                            <button id="disabled" disabled onclick="editd(${parcel.parcel_id}, ${parcel.total_price}, \'`+parcel.pickup_location+`\');"><i class="fa fa-fw fa-pencil"></i> Edit</button>
+                            <button id="disabled" disabled  onclick="cancelParcelModal(${parcel.parcel_id});"><i class="fa fa-fw fa-ban"></i> Cancel</button>
+                        </td>
+                    </tr>`;
+                }
+                arr.push(tabledata);
+                let i = arr.length - 1
+                myNewArr = arr[i].split("</tr>");
+            });
+            loadData(myNewArr, "myparcels");
+            document.getElementById("next").onclick = function(){
+                nextPage(myNewArr, "myparcels")
+            }
+            document.getElementById("prev").onclick = function(){
+                previousPage(myNewArr, "myparcels")
+            }
+            document.getElementById("wholelist").onclick = function(){
+                document.getElementById('myparcels').innerHTML = tabledata;
+            }
+            document.getElementById("first").onclick = function(){
+                loadData(myNewArr, "myparcels");
+            }
+
+        }
     })
-})();
-
-
-
-function viewParcelDetails(parcelId){
-    var modal = document.getElementById('details');
-    // var modal = document.querySelector('#details');
-    modal.style.display = "block";
-    getAParcel(parcelId)
-    // var w = document.querySelector(".close");
-    // w.onclick = function() {
-    //     modal.style.display = "none";
-    // };
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    };
 }
 
-function cancelParcelModal(parcel_id){
-    var modal = document.getElementById('cancelModal');
-    var button = document.getElementById("cancelbtn");
-    var closeModal = document.getElementsByClassName("closeCancel")[0];
-    button.onclick = function() {
-        modal.style.display = "block";
-    };
-    closeModal.onclick = function(){
-        modal.style.display = "none";
-    };
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    };
-    nots(parcel_id);
-    var cancelbutton = document.getElementById("cancelcancel");
-    cancelbutton.onclick = function(){
-        modal.style.display = "none";
-    }
-}
+
+
+
+
+
+
