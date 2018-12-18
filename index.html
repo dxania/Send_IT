@@ -5,68 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SendIT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../assets/images/icon.png" rel="icon">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="scripts/index.js"></script>
+    <script src="scripts/custom.js"></script>
 </head>
 <body>
     <header>
         <div class="brand">
             <span>SEND It<i class="fa fa-paper-plane-o"></i></span>
         </div>
+        <ul>
+            <li><a href="#about"> About</a></li>
+            <li><a href="#login"> Login</a></li>
+        </ul>
     </header>
-    <section>
-        <div class="left_container">
-            <table>
-                <tr>
-                    <td>
-                        <i class="fa fa-plus"></i><br>
-                        <span>Create parcel <br>delivery orders</span>
-                    </td>       
-                </tr>
-                <tr>
-                    <td style="padding-left:80px">
-                        <i class="fa fa-asterisk"></i><br>
-                        <span>View details of <br>parcel delivery orders</span>
-                    </td>         
-                </tr>
-                <tr>
-                    <td style="padding-left:160px">
-                        <i class="fa fa-map-marker"></i><br>
-                        <span>View the current <br>location of a parcel</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="right_container">
-            <div id="login">
-                <div class="icon">
-                    <i class="fa fa-user-circle"></i>
-                </div><br>
-                <form>
-                    <input type="text" id="login_name" required>
-                    <input type="password" id="login_password" required><br>
-                    <p id="err"></p>
-                    <button class="loginButton" onclick="login(); return false;">Login</button><br>  
-                    <span>or</span><br>
-                    <button class="option" onclick="focusSignup();">Create an Account</button>
-                </form>
+    <section >
+        <div class="first">
+            <img src="../assets/images/homePg.png">
+            <div class="right_container">
+                <div class="toptext">
+                    <h2>About</h2>
+                        SEND IT is a trustworthy courier<br> 
+                        delivery service that offers time and <br>
+                        cost efficient services while keeping you <br>
+                        involved in the delivery process of your parcels. <br>
+                        In a few steps, place your orders <br>
+                        and we will do the rest.   
+                </div>
+
+                <hr>
+
+                <div id="login">
+                    <div class="icon">
+                        <i class="fa fa-user-circle"></i>
+                    </div><br>
+                    <form>
+                        <span id="ics"><i class="fa fa-user-o "></i></span>  <input type="text" id="login_name" required><br>
+                        <span id="ics"><i class="fa fa-unlock-alt"></i></span> &nbsp;<input type="password" id="login_password" required><br>
+                        <p id="err"></p>
+                        <button class="loginButton" onclick="login(); return false;">Login</button> &nbsp;
+                        <span>or</span>
+                        <button class="option" onclick="signupContainer();">Create an Account</button>
+                    </form>
+                </div>
+
+                <div id="signup">
+                    <div class="icon">
+                        <i class="fa fa-user-plus"></i>
+                    </div><br>
+                    <form name="signupform">
+                        <!-- <span id="ics"><i class="fa fa-user-o "></i></span> <input type="text" id="user_name" placeholder="User Name" pattern="[A-Za-z]+" title="Must be letters" required><br> -->
+                        <div class="tooltip">
+                            <span id="ics"><i class="fa fa-user-o "></i></span> <input type="text" id="user_name" placeholder="User Name" pattern="[A-Za-z]+" title="Must be letters" required>
+                            <span id="err1"></span>
+                        </div><br>
+                        <div class="tooltip">
+                            <span id="ics"><i class="fa fa-envelope-o "></i></span> <input type="email" id="user_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email addess. For example example@gmail.com" required><br>
+                            <span id="er2"></span>
+                            <span class="tooltiptext" id="errs"></span>
+                        </div><br>
+                        <!-- <p id="err1"></p> -->
+                        <!-- <span id="ics"><i class="fa fa-envelope-o "></i></span> <input type="email" id="user_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email addess. For example example@gmail.com" required><br>
+                        <p id="err2"></p> -->
+                        <span id="ics"><i class="fa fa-phone "></i></span> 
+                        <select id="country" name="country">
+                            <option data-countryCode="UG" value="256" selected>UG (+256)</option>
+                        </select> <input type="tel" id="user_mobile" placeholder="0772123456" pattern="[0][7][1-9][0-9][0-9]{3}[0-9]{3}" maxlength="10" minlength="10" title="Must start with 07 and be 10 numbers long" required>
+                        <span id="er3"></span><br>
+                        <span id="ics"><i class="fa fa-unlock-alt "></i></span> &nbsp;<input type="password" id="user_password" placeholder="Password" required pattern=".{9,}" title="Must be more 9 or more characters long">
+                        <span id="er4"></span><br>
+                        <span id="ics"><i class="fa fa-unlock-alt "></i></span> &nbsp;<input type="password" id="confirm_user_password" placeholder="Confirm Password" required>
+                        <p id="passworderr"></p>
+                        <!-- <p id="errs"></p> -->
+                        <button class="signupButton" onclick="signup(); return false;">Create Account</button>&nbsp;  <span style="color:whitesmoke;"> or</span>  <button class="option" onclick="loginContainer();">Login Instead</button>
+                    </form>
+                </div>
             </div>
-            
-            <div id="signup">
-                <div class="icon">
-                    <i class="fa fa-user-plus"></i>
-                </div><br>
-                <form>
-                    <input type="text" id="user_name" placeholder="User Name" required>
-                    <input type="email" id="user_email" placeholder="Email" required>
-                    <input type="password" id="user_password" placeholder="Password" required>
-                    <p id="errs"></p>
-                    <button class="signupButton" onclick="signup(); return false;">Create Account</button>  <span style="color:whitesmoke;">or</span> <button class="option" onclick="focusLogin();">Login Instead</button>
-                </form>
+        </div>   
+    </section>   
+
+    <section >
+        <div id="about">
+            <div class="abouttext">
+                <h2>About</h2>
+                <p>
+                    SEND IT is a trustworthy courier delivery service that offers time and
+                    cost efficient services while keeping you involved in the delivery process of your parcels.
+                    In a few steps, place your orders and we will do the rest.  
+                </p> 
             </div>
-            
+            <div class="text">
+                <h2>Using the application</h2>
+            </div>
+                
+            <div class="grid-container">
+                <div>
+                    <i class="fa fa-user-plus"></i><br>Create an account<br><br>
+                    <span>Register with SEND IT to place parcel delivery orders.</span>
+                </div>
+                    
+                <div>
+                    <i class="fa fa-map-marker"></i><br>Enter Parcel and Delivery details<br><br>
+                    <span> This includes the pickup and destination details.</span>
+                </div>
+                
+                <div>
+                    <i class="fa fa-money"></i><br>Get price estimate<br><br>
+                    <span>Get price estimate based on parcel weight and distance.</span>
+                </div>
+
+                <div>
+                    <i class="fa fa-plus"></i><br>Place your order<br><br>
+                    <span>Submit your order.</span>
+                </div>
+
+                <div>
+                    <i class="fa fa-pencil"></i><br>Modify order<br><br>
+                    <span>If you may, modify the destination before 12 hours after order placement.</span>
+                </div>
+                    
+                <div>
+                    <i class="fa fa-asterisk"></i><br>View parcel details<br><br>
+                    <span>View details of all and specific parcel delivery orders.</span>
+                </div>  
+            </div>
         </div>
     </section>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+            </div>
+            <div class="popup-body">
+                <p id="msg"></p>
+            </div>
+            <div class="popup-footer">
+                <button id="ok">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>Send IT &copy; 2018</span>
+    </footer>
+
 </body>
 </html>
