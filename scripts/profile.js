@@ -13,7 +13,7 @@
     let token = localStorage.getItem("access_token");
     let user_name = localStorage.getItem("username");
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}`, {
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}`, {
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -72,7 +72,7 @@ function cancelEdit(){
     let token = localStorage.getItem("access_token");
     let user_name = localStorage.getItem("username");
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}/parcels`, {
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}/parcels`, {
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -92,7 +92,7 @@ function cancelEdit(){
     let token = localStorage.getItem("access_token");
     let user_name = localStorage.getItem("username");
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}/parcels/cancelled`, {
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}/parcels/cancelled`, {
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -112,7 +112,7 @@ function cancelEdit(){
     let token = localStorage.getItem("access_token");
     let user_name = localStorage.getItem("username");
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}/parcels/pending`, {
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}/parcels/pending`, {
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -132,7 +132,7 @@ function cancelEdit(){
     let token = localStorage.getItem("access_token");
     let user_name = localStorage.getItem("username");
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}/parcels/delivered`, {
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}/parcels/delivered`, {
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -152,7 +152,7 @@ function cancelEdit(){
     let token = localStorage.getItem("access_token");
     let user_name = localStorage.getItem("username");
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}/parcels/intransit`, {
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}/parcels/intransit`, {
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -212,7 +212,7 @@ function editUserInfo(){
     }
     console.log(formdata);
 
-    fetch(`http://127.0.0.1:5000/api/v1/users/${user_name}/edit`,{
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_name}/edit`,{
         method: 'put',
         headers: {
             "Content-Type":"application/json",

@@ -13,7 +13,7 @@
 function getParcels(){
     let token = localStorage.getItem("access_token");
 
-    fetch('http://localhost:5000/api/v1/parcels',{
+    fetch('https://send-it-api-app.herokuapp.com/api/v1/parcels',{
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -91,7 +91,7 @@ function getUserParcels(){
     console.log(playload.identity.id);
     let user_id = playload.identity.id;
 
-    fetch(`http://localhost:5000/api/v1/users/${user_id}/parcels`,{
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_id}/parcels`,{
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,

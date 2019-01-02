@@ -15,7 +15,7 @@ function editPresentDestination(parcel_id){
         document.getElementById("newdestErr").innerHTML = document.getElementById("newdest").validationMessage;
     }else{
         console.log(newDestination)
-        fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/destination`,{
+        fetch(`https://send-it-api-app.herokuapp.com/api/v1/parcels/${parcel_id}/destination`,{
             method: 'put',
             headers: {
                 "Content-Type":"application/json",

@@ -25,7 +25,7 @@ function signup(){
         }
         console.log(formdata);
 
-        fetch('http://127.0.0.1:5000/api/v1/auth/signup',{
+        fetch('https://send-it-api-app.herokuapp.com/api/v1/auth/signup',{
             method: 'post',
             headers: {
                 "Content-Type":"application/json",
@@ -63,7 +63,7 @@ function login() {
         "user_name":username,
         "user_password":password
     }
-    fetch('http://127.0.0.1:5000/api/v1/auth/login',{
+    fetch('https://send-it-api-app.herokuapp.com/api/v1/auth/login',{
         method: 'post',
         headers: {
             "Content-Type":"application/json",
