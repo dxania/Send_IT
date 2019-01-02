@@ -8,7 +8,7 @@
 (function getUsers(){
     let token = localStorage.getItem("access_token");
 
-    fetch('http://localhost:5000/api/v1/users',{
+    fetch('https://send-it-api-app.herokuapp.com/api/v1/users',{
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,
@@ -47,7 +47,7 @@
 function changeUserRole(user_id){
     let token = localStorage.getItem("access_token");
 
-    fetch(`http://localhost:5000/api/v1/users/${user_id}/role`,{
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/users/${user_id}/role`,{
         method:'put',
         headers: {
             "Content-Type":"application/json",

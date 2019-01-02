@@ -2,7 +2,7 @@
 
 function getAParcel(parcelid){
     let token = localStorage.getItem("access_token");
-    fetch(`http://localhost:5000/api/v1/parcels/${parcelid}`,{
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/parcels/${parcelid}`,{
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`,

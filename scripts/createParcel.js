@@ -55,7 +55,7 @@ function createParcel(){
     
         let token = localStorage.getItem("access_token");
     
-        fetch('http://localhost:5000/api/v1/parcels',{
+        fetch('https://send-it-api-app.herokuapp.com/api/v1/parcels',{
             method: 'post',
             headers: {
                 "Content-Type":"application/json",

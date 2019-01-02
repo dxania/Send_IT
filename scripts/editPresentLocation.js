@@ -7,7 +7,7 @@ function editPresentLocation(parcel_id){
     if (!document.getElementById("loc").checkValidity()) {
         document.getElementById("presErr").innerHTML = document.getElementById("loc").validationMessage;
     }else{
-        fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/present_location`,{
+        fetch(`https://send-it-api-app.herokuapp.com/api/v1/parcels/${parcel_id}/present_location`,{
         method: 'put',
         headers: {
             "Content-Type":"application/json",

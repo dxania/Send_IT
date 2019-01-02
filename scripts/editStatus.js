@@ -2,7 +2,7 @@
 
 function editstatus(parcel_id){
     let token = localStorage.getItem("access_token");
-    fetch(`http://localhost:5000/api/v1/parcels/${parcel_id}/status`,{
+    fetch(`https://send-it-api-app.herokuapp.com/api/v1/parcels/${parcel_id}/status`,{
         method: 'put',
         headers: {
             "Content-Type":"application/json",
